@@ -43,6 +43,7 @@ export default function ({ profile, error }: ProfileProps) {
   } = profile;
   return (
     <div className="flex flex-col justify-start profile">
+      {/**There could be multipule profile images , a slider need to be added here */}
       <div className="flex flex-col justify-start profile-slider">
         <img src={avatarUrl} />
       </div>
