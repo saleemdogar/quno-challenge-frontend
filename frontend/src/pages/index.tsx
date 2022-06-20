@@ -54,7 +54,7 @@ export default function IndexPage({ profiles, error }: IndexProps) {
         return profiles;
     }
   };
-  if (error) return error;
+  if (error) return <>error</>;
   return (
     <div className="main">
       <Header />
