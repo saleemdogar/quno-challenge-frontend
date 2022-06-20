@@ -7,6 +7,7 @@ import { ProfileType, FilterKes, BestScore } from "../types/profiletypes";
 
 interface IndexProps {
   profiles: ProfileType[];
+  error: string;
 }
 
 const FILTER_DATA = [
@@ -26,10 +27,15 @@ export async function getServerSideProps() {
     };
   } catch (error) {
     console.log(error);
+    return {
+      props: {
+        error: "Server error...",
+      },
+    };
   }
 }
 
-export default function IndexPage({ profiles }: IndexProps) {
+export default function IndexPage({ profiles, error }: IndexProps) {
   const [filterId, setFilterId] = useState("");
 
   const filterData = (): ProfileType[] => {
@@ -48,6 +54,7 @@ export default function IndexPage({ profiles }: IndexProps) {
         return profiles;
     }
   };
+  if (error) return error;
   return (
     <div className="main">
       <Header />
@@ -57,6 +64,7 @@ export default function IndexPage({ profiles }: IndexProps) {
         onFilterChange={setFilterId}
       />
       <div className="flex flex-col justify-start p-8" role="profile-cont">
+        {/**There might be large number of items we need to add pagination */}
         {filterData().map((profile) => (
           <Profile key={profile.slug} {...profile} />
         ))}
