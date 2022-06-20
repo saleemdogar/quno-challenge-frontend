@@ -56,7 +56,7 @@ export default function IndexPage({ profiles }: IndexProps) {
         filters={FILTER_DATA}
         onFilterChange={setFilterId}
       />
-      <div className="flex flex-col justify-start p-8">
+      <div className="flex flex-col justify-start p-8" role="profile-cont">
         {filterData().map((profile) => (
           <Profile key={profile.slug} {...profile} />
         ))}

@@ -10,6 +10,7 @@ export default function ({ filters, select, onFilterChange }: FilterProps) {
         <button
           className={`${id === select && "select"}`}
           key={id}
+          role={id}
           onClick={() => onFilterChange(id)}
         >
           {text}

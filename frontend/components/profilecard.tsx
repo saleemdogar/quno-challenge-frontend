@@ -30,7 +30,7 @@ export default function ({
       <div className="flex flex-row justify-start profile-card-reviews">
         <div className="flex flex-col justify-center details">
           <img src="/images/count.svg" />
-          <h5>{qunoScoreText}</h5>
+          <h5 role={"qunoScoreText"}>{qunoScoreText}</h5>
           <span>Qunoscore</span>
         </div>
         <div className="flex flex-col justify-start description">
