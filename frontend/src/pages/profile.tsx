@@ -4,7 +4,7 @@ import ReviewCard from "../components/reviewcard";
 
 interface ProfileProps {
   profile: ProfileType;
-  query: any;
+  error: string;
 }
 export async function getServerSideProps({ query }: any) {
   if (!query.slug)
@@ -19,11 +19,16 @@ export async function getServerSideProps({ query }: any) {
       },
     };
   } catch (error) {
-    console.log("err", error);
+    return {
+      props: {
+        error: "Server error...",
+      },
+    };
   }
 }
 
-export default function ({ profile }: ProfileProps) {
+export default function ({ profile, error }: ProfileProps) {
+  if (error) return error;
   if (!profile) return "";
   const {
     name,
